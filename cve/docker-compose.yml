@@ -1,0 +1,6 @@
+services:
+  web:
+    image: vulhub/rails:5.0.7
+    container_name: cve-2018-3760-vuln
+    ports:
+      - "3000:3000"

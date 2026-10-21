@@ -1,0 +1,6 @@
+services:
+  web:
+    build: ./fixed
+    container_name: cve-2018-3760-fixed
+    ports:
+      - "3000:3000"

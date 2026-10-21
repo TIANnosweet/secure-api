@@ -1,5 +1,9 @@
 venv/
+.venv/
 __pycache__/
-*.pyc
-app.db
+*.py[cod]
+*.db
 .env
+.pytest_cache/
+bandit-report.json
+pip-audit.json
