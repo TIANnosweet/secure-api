@@ -7,3 +7,7 @@ __pycache__/
 .pytest_cache/
 bandit-report.json
 pip-audit.json
+api.out
+api.err
+*.log
+

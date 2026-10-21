@@ -1,6 +1,10 @@
 services:
   web:
-    image: vulhub/rails:5.0.7
+    build:
+      context: .
+      args:
+        SPROCKETS_VERSION: "3.7.1"
+    image: cve-2018-3760-vuln:local
     container_name: cve-2018-3760-vuln
     ports:
       - "3000:3000"

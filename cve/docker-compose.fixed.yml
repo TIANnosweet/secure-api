@@ -1,6 +1,10 @@
 services:
   web:
-    build: ./fixed
+    build:
+      context: .
+      args:
+        SPROCKETS_VERSION: "3.7.2"
+    image: cve-2018-3760-fixed:local
     container_name: cve-2018-3760-fixed
     ports:
       - "3000:3000"
