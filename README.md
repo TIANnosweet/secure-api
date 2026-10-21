@@ -137,7 +137,7 @@ three jobs:
 | `SCA - pip-audit` | pip-audit 2.10 | no known vulnerable dependency versions |
 
 Bandit and pip-audit reports are uploaded as workflow artefacts
-(`bandit-report`, `pip-audit-report`).
+(`bandit-report`, `pip-audit-report`). All runs: https://github.com/TIANnosweet/secure-api/actions
 
 ![GitHub Actions: all jobs green](docs/ci-green.png)
 
@@ -255,6 +255,9 @@ the same image with `SPROCKETS_VERSION=3.7.2`:
 docker compose -f docker-compose.fixed.yml up -d --build
 ```
 
+The complete upstream diff, together with the explanation of why the extra condition closes the
+hole, is stored in [`cve/patch/CVE-2018-3760-sprockets.patch`](cve/patch/CVE-2018-3760-sprockets.patch).
+
 ### 4.6 Proof that the vulnerability is eliminated
 
 ![Patched build: traversals rejected, application healthy](docs/cve-3-fixed.png)
@@ -297,6 +300,8 @@ cd cve && ./verify-fix.sh
     ├── app/assets/...             # the asset tree the server is allowed to serve
     ├── docker-compose.yml         # vulnerable build (sprockets 3.7.1)
     ├── docker-compose.fixed.yml   # patched build (sprockets 3.7.2)
+    ├── patch/
+    │   └── CVE-2018-3760-sprockets.patch   # upstream fix + rationale
     ├── exploit.sh                 # reproduces CVE-2018-3760
     └── verify-fix.sh              # replays the attack against the patched build
 ```
