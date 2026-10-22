@@ -1,4 +1,4 @@
-﻿name: Security CI
+name: Security CI
 
 on:
   push:
@@ -18,8 +18,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - name: Upgrade pip
+        run: python -m pip install --upgrade "pip==26.2.2"
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest
+        run: python -m pip install -r requirements.txt pytest
       - name: Run functional tests
         run: pytest -q
 
@@ -31,8 +33,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - name: Upgrade pip
+        run: python -m pip install --upgrade "pip==26.2.2"
       - name: Install Bandit
-        run: pip install bandit
+        run: python -m pip install bandit
       - name: Run Bandit (human readable)
         run: bandit -r . -x ./venv,./tests -f screen
       - name: Export Bandit report (JSON)
@@ -53,8 +57,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - name: Upgrade pip
+        run: python -m pip install --upgrade "pip==26.2.2"
       - name: Install pip-audit
-        run: pip install pip-audit
+        run: python -m pip install pip-audit
       - name: Audit dependencies (human readable)
         run: pip-audit -r requirements.txt
       - name: Export audit report (JSON)
@@ -66,5 +72,3 @@ jobs:
         with:
           name: pip-audit-report
           path: pip-audit.json
-
-
