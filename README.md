@@ -139,6 +139,10 @@ three jobs:
 Bandit and pip-audit reports are uploaded as workflow artefacts
 (`bandit-report`, `pip-audit-report`). All runs: https://github.com/TIANnosweet/secure-api/actions
 
+The actions are pinned to their Node 24 releases (`actions/checkout@v5`, `actions/setup-python@v6`,
+`actions/upload-artifact@v6`) and the runner image to `ubuntu-24.04`, so a run produces no deprecation
+warnings and no label-migration notices in its annotations.
+
 ![GitHub Actions: all jobs green](docs/ci-green.png)
 
 ---
