@@ -1,4 +1,4 @@
-name: Security CI
+﻿name: Security CI
 
 on:
   push:
@@ -14,8 +14,8 @@ jobs:
     name: Tests - pytest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install dependencies
@@ -27,8 +27,8 @@ jobs:
     name: SAST - Bandit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install Bandit
@@ -40,7 +40,7 @@ jobs:
         run: bandit -r . -x ./venv,./tests -f json -o bandit-report.json || true
       - name: Upload Bandit report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: bandit-report
           path: bandit-report.json
@@ -49,8 +49,8 @@ jobs:
     name: SCA - pip-audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install pip-audit
@@ -62,7 +62,8 @@ jobs:
         run: pip-audit -r requirements.txt -f json -o pip-audit.json || true
       - name: Upload audit report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: pip-audit-report
           path: pip-audit.json
+
