@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     name: Tests - pytest
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -25,7 +25,7 @@ jobs:
 
   sast:
     name: SAST - Bandit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -47,7 +47,7 @@ jobs:
 
   sca:
     name: SCA - pip-audit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -66,4 +66,5 @@ jobs:
         with:
           name: pip-audit-report
           path: pip-audit.json
+
 
